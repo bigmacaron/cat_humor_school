@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+
+    <link rel="stylesheet" type="text/css" href="static/css/board_style.css">
+
+    <meta charset="utf-8">
+    
+    <title>cat_humor_school</title>
+
+</head>
+{% block script%}
+{% endblock%}
+<body>
+    <header id = header>
+        {% block header %}
+
+        <header>
+            <div>
+                <a href="/user_login.html"><img src = "static/img/menu.png"  style="height:80px; float:left; margin: 0 0 0 2%"></a>
+                
+            </div>
+            <div id = "header">
+                <a href="/"><img src = "/static/img/title.png" height="80px"></a>
+            </div>
+        </header> 
+        {% endblock %}
+    </header>          
+    <section>
+        {% block post %}
+        <div>
+            <table id = "board_header">
+                <th>제목</th>
+                <th>작성일</th>
+            </table>
+        </div>
+
+        <div id = "Post">
+            <!-- 시작 -->
+            <div><br></div> 
+            <div><br></div> 
+            <div> <div style="text-align:center;"><img src="http://thimg.todayhumor.co.kr/upfile/202006/1591877770db37675ba46e4973874697020f4bbe04__mn792537__w857__h1440__f94203__Ym202006.png" width=100% height=100% alt="2.jpg" class="chimg_photo tcx_image" style="border:none;" filesize="655793" id="img1"></div> 
+            <!-- <div style="text-align:center;"><img src="http://thimg.todayhumor.co.kr/upfile/202006/1591287505b5a3a3fc17ff4b5d97f75ba0d8074fc1__mn125052__w810__h7742__f579447__Ym202006.jpg" width=100% height=100% alt="3.jpg" class="chimg_photo tcx_image" style="border:none;" filesize="579447" id="img2"></div> -->
+            <br></div> <div><br></div>
+            <!-- 끝 -->
+        </div>
+        {% endblock %}
+    </section>
+        {% block test %}
+        {% endblock %}
+
+    <div>
+        {% block list %}
+        <table id = "board_header">
+
+            <!--헤더-->
+            <tr id = board_header_title>  
+                <th>게시글번호</th>
+                <th>제목</th>
+                <th>날짜</th>
+            </tr>
+            
+
+            <!--게시물-->
+            <tr id = post>              
+                <td>1</td>
+                <td><a href="/post.html">게시글 제목(작동되는거 이거 하나임)</a></td>
+                <td>2020-06-08</td>
+            </tr>
+
+            <tr id = post>              
+                <td>2</td>
+                <td><a href="#">게시글 제목(링크걸기)</a></td>
+                <td>2020-06-08</td>
+            </tr>
+
+            <tr id = post>              
+                <td>3</td>
+                <td><a href="#">게시글 제목(링크걸기)</a></td>
+                <td>2020-06-08</td>
+            </tr>
+
+            <tr id = post>              
+                <td>4</td>
+                <td><a href="#">게시글 제목(링크걸기)</a></td>
+                <td>2020-06-08</td>
+            </tr>
+
+            <tr id = post>              
+                <td>5</td>
+                <td><a href="#">게시글 제목(링크걸기)</a></td>
+                <td>2020-06-08</td>
+            </tr>
+
+            <tr id = post>              
+                <td>6</td>
+                <td><a href="#">게시글 제목(링크걸기)</a></td>
+                <td>2020-06-08</td>
+                
+            </tr>
+            <tr id = post>              
+                <td>7</td>
+                <td><a href="#">게시글 제목(링크걸기)</a></td>
+                <td>2020-06-08</td>
+                
+            </tr>
+            <tr id = post>              
+                <td>8</td>
+                <td><a href="#">게시글 제목(링크걸기)</a></td>
+                <td>2020-06-08</td>
+                
+            </tr>
+            <tr id = post>              
+                <td>9</td>
+                <td><a href="#">게시글 제목(링크걸기)</a></td>
+                <td>2020-06-08</td>
+                
+            </tr>
+            <tr id = post>              
+                <td>10</td>
+                <td><a href="#">게시글 제목(링크걸기)</a></td>
+                <td>2020-06-08</td>
+                
+            </tr>
+            <tr id = post>              
+                <td>11</td>
+                <td><a href="#">게시글 제목(링크걸기)</a></td>
+                <td>2020-06-08</td>
+                
+            </tr>
+            <tr id = post>              
+                <td>12</td>
+                <td><a href="#">게시글 제목(링크걸기)</a></td>
+                <td>2020-06-08</td>
+                
+            </tr>
+            <tr id = post>              
+                <td>13</td>
+                <td><a href="#">게시글 제목(링크걸기)</a></td>
+                <td>2020-06-08</td>
+                
+            </tr>
+            <tr id = post>              
+                <td>14</td>
+                <td><a href="#">게시글 제목(링크걸기)</a></td>
+                <td>2020-06-08</td>
+                
+            </tr>
+            <tr id = post>              
+                <td>15</td>
+                <td><a href="#">게시글 제목(링크걸기)</a></td>
+                <td>2020-06-08</td>
+                
+            </tr>
+            {% endblock %}
+    </div>
+        
+        
+    <div>
+        <table id=footer>
+
+        </table>
+    </div>
+
+    <div class = "search">
+        {% block paging %}
+        <div class="paging">
+            <a href="/quick_move.html" onclick="window.open(this.href, '_blank', '/quick_move'); return false">퀵</a>
+            <a href="#">&laquo;</a>
+            <a href="#">1</a>
+            <a href="#" class="active">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+            <a href="#">6</a>
+            <a href="#">&raquo;</a>
+        
+        </div>
+        {% endblock %}
+    </div>
+    </body>
+</head>
+</html>

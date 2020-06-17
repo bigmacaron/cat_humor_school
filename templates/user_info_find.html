@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+<body>
+    {% block post %}
+    아이디(이메일) 찾기
+    <h3 style='margin:5px 5px 10px 5px'> 닉네임을  입력하세요  <input type = "TEXT" name="User_ID" size = 20></h3>
+    <button class = "button" onclick="#">찾기</button>
+    <hr>
+    비밀번호 찾기
+    <h3 style='margin:5px 5px 10px 5px'> 이메일을 입력하세요<input type = "TEXT" name="User_PW" size = 20></h3>
+    <button class = "button" onclick="#">찾기</button>
+    <hr>
+
+    <a href = "../#">문의하기</a>
+    <button class = "button" onclick="location.href = 'user_login.html'">뒤로가기</button>
+<br>
+    <a href = "/">인덱스 페이지로(임시)</a>
+    {% endblock %}
+    {% block list %}
+    {% endblock %}
+    {% block paging %}
+    {% endblock %}
+    
+</body>
+</html>
+

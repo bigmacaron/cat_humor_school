@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+   
+
+    <meta charset="utf-8">
+    <title>easter_egg</title>
+    </head>
+    <SCRIPT language="javaScript"> 
+        var easter_count=0;
+
+        function button_oneclick()
+        {
+            easter_count++;
+            if(easter_count == 5)
+            {
+                alert("ver.0.1");
+                window.location = "/img_test.html";
+            }
+        }      
+    </SCRIPT>
+    <body>
+       <div>
+        <button class="btn" id="btn" type="submit" onclick=button_oneclick() style="background-color:white"><img class="btn-img" src="static/img/user_info_icon.png"></button>
+       </div> 
+    </body>

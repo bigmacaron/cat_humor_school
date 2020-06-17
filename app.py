@@ -4,7 +4,7 @@ import user_app
 
 app = Flask (__name__)
 
-
+#메인페이지
 @app.route('/index.html')
 @app.route('/')
 def index():

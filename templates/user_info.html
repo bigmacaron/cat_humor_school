@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block script%}
+<SCRIPT language="javaScript"> 
+    var easter_count=0;
+
+    function button_oneclick()
+    {
+        easter_count++;
+        if(easter_count == 5)
+        {
+            alert("ver.0.1");
+            window.location = "/img_test.html";
+        }
+    }      
+</SCRIPT>
+{% endblock %}
+<body>
+    {% block post %}
+    <div>
+        <button type="submit" onclick=button_oneclick() style="background-color:white"><img class="btn-img" src="static/img/user_info_icon.png"></button>
+    </div>  
+    <h3 style='margin:5px 5px 10px 5px'> 아이디(활성화x)  <input type = "TEXT" name="User_ID" size = 20></h3>
+    <h3 style='margin:5px 5px 10px 5px'> 현재 닉네임 <input type = "TEXT" name="User_PW" size = 20></h3>
+    <h3 style='margin:5px 5px 10px 5px'> 현재 비밀번호 <input type = "TEXT" name="User_PW" size = 20></h3>
+    <h3 style='margin:5px 5px 10px 5px'> 바꿀 비밀번호 <input type = "TEXT" name="User_PW" size = 20></h3>
+    <h3 style='margin:5px 5px 10px 5px'> 바꿀 비밀번호 확인 <input type = "TEXT" name="User_PW" size = 20></h3>
+
+    <a href = "/user_info_find.html">아이디/비밀번호 찾기</a>
+    <div>
+        <button class = "button button1" onclick="location.href = '#'">나의 댓글 보기</button>
+        <button class = "button button1" onclick="location.href = 'user_login.html'">로그아웃</button>
+    </div>
+    {% endblock %}
+    {% block list %}
+    {% endblock %}
+    {% block paging %}
+    {% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <style type="text/css">
+
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding:wght@400;700&display=swap');
+
+        
+        body{            
+            align-items: center;
+            justify-content: center;
+            margin-top: 100px;            
+            display: flex ;
+            }
+        .spacer{height: 20px;}
+        
+    
+        .bb{
+            width: 100px; 
+            height: 100px;  
+            animation: pulse 2s infinite;
+            animation-name:bb_ani;
+            display: inline-block;            
+            }
+        .cc{
+            width: 200px; 
+            height: 200px;  
+            animation: pulse 2s infinite;
+            animation-name:cc_ani;
+            display: inline-block; 
+        }
+        @keyframes bb_ani{
+            0%{
+                transform: scale(1.7);
+                
+            }50%{
+                transform: scale(2);
+            }100%{
+                transform: scale(1.7);
+            }
+        }
+        @keyframes cc_ani{
+            0%{
+                transform: scale(2);
+                 
+            }50%{
+                transform: scale(1.7);
+            }100%{
+                transform: scale(2);                            
+            }
+        }
+
+    </style>    
+
+    <meta charset="utf-8">
+    <title>easter_egg</title>
+    </head>
+    
+    <body>
+
+    <a href="/">
+        <div class="body" style="margin-left: 110px;">
+            <div class="bb"><img src="/static/img/user_info_icon.png" alt=""></div> 
+            <div class="bb" style="margin-left: 30px;"><img src="/static/img/user_info_icon.png" alt=""></div> 
+            <div class="bb" style="margin-left: 30px;"><img src="/static/img/user_info_icon.png" alt=""></div>
+            <div class="bb" style="margin-left: 30px;"><img src="/static/img/user_info_icon.png" alt=""></div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="bb"><img src="/static/img/user_info_icon.png" alt=""></div>    
+            <div class="cc" style="margin-left: 100px;"><img src="/static/img/title_cat.png" alt="cat"></div> 
+            <div class="bb"><img src="/static/img/user_info_icon.png" alt=""></div>
+            <br>
+            <br>
+            <div class="spacer"></div>
+            <div class="bb"><img src="/static/img/user_info_icon.png" alt=""></div> 
+            <div class="bb" style="margin-left: 30px;"><img src="/static/img/user_info_icon.png" alt=""></div> 
+            <div class="bb" style="margin-left: 30px;"><img src="/static/img/user_info_icon.png" alt=""></div>
+            <div class="bb" style="margin-left: 30px;"><img src="/static/img/user_info_icon.png" alt=""></div>
+        </div>
+    </a>   
+   
+    </body>
+
+
+
+   
