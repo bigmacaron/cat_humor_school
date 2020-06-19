@@ -62,12 +62,12 @@ a:visited {text-decoration: none; color: gray;}
     margin: auto;
     padding : auto;
 }
-
+ 
 #header {
     font-family : "Nanum Gothic", sans-seif;
     font-size : 30px;
     width: 100%;
-    height : 80px;
+    height : 80px ;
     margin:  0 auto;
     padding : auto;
     text-align:center;
