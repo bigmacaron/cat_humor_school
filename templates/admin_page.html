@@ -18,96 +18,46 @@
     </header>
 
     <div>
-        <table id = "site">
-            <tr>
-                <td><button class="button button1">디시</button></td>
-                <td><button class="button button1">인벤</button></td>
-                <td><button class="button button1">웃대</button></td>
-                <td><button class="button button1">네이트</button></td>
-                <td><button class="button button1">뽐뿌</button></td>
-                
-            </tr>
-            <tr>
-                <td><button class="button button1">루리웹</button></td>
-                <td><button class="button button1">오유</button></td>
-                <td><button class="button button1">이토</button></td>
-                <td><button class="button button1">와고</button></td>
-                <td><button class="button button1">에펨</button></td>
-            </tr>
-        </table>
+        <form action='/admin_page.html' method="POST">
+            <input type='submit' name='site_name' value='DCINSIDE'/>
+            <input type='submit' name='site_name' value='INVEN'/>
+            <input type='submit' name='site_name' value='HUMORUNIV'/>
+            <input type='submit' name='site_name' value='NATEPANN'/>
+            <input type='submit' name='site_name' value='PPOMPPU'/>
+            <input type='submit' name='site_name' value='RULIWEB'/>
+            <input type='submit' name='site_name' value='TODAYHUMOR'/>
+            <input type='submit' name='site_name' value='ETOLAND'/>
+            <input type='submit' name='site_name' value='YGOSU'/>
+            <input type='submit' name='site_name' value='FMKOREA'/>
+        </form>
     </div>
 
-    
     <div>
         <table id = "board_header">
 
-            <!--헤더-->
             <th>게시글번호</th>
             <th>제목</th>
             <th>체크박스</th>
-            
 
-            <!--게시물-->
-            <tr id = post>              
-                <td>1</td>
-                <td><a href="../contents/Post.html">게시글 제목(링크걸기)</a></td>
-                <td><input type="checkbox" name="xxx" value="yyy" checked style='width:20px; height:20px;'></td>
-            </tr>
-            
-            <tr id = post>              
-                <td>2</td>
-                <td><a href="#">게시글 제목(링크걸기)</a></td>
-                <td><input type="checkbox" name="xxx" value="yyy" checked style='width:20px; height:20px;'></td>
-            </tr>
-
-            <tr id = post>              
-                <td>3</td>
-                <td><a href="#">게시글 제목(링크걸기)</a></td>
-                <td><input type="checkbox" name="xxx" value="yyy" checked style='width:20px; height:20px;'></td>
-            </tr>
-
-            <tr id = post>              
-                <td>4</td>
-                <td><a href="#">게시글 제목(링크걸기)</a></td>
-                <td><input type="checkbox" name="xxx" value="yyy" checked style='width:20px; height:20px;'></td>
-            </tr>
-
-            <tr id = post>              
-                <td>5</td>
-                <td><a href="#">게시글 제목(링크걸기)</a></td>
-                <td><input type="checkbox" name="xxx" value="yyy" checked style='width:20px; height:20px;'></td>
-            </tr>
-
-            <tr id = post>              
-                <td>6</td>
-                <td><a href="#">게시글 제목(링크걸기)</a></td>
-                <td><input type="checkbox" name="xxx" value="yyy" checked style='width:20px; height:20px;'></td>
-            </tr>
-
+            {% if title_list == None %}
+                <tr></tr>
+            {% else %}
+                {% for index in range(for_num) %}
+                    <tr id = post>
+                        <td>{{index + 1}}</td>
+                        <td><a href="{{link_list[index]}}">{{title_list[index]}}</a></td>
+                        <td><input type="checkbox" name="xxx" value="yyy" style='width:20px; height:20px;'></td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
     </div>
-    
-    
+
     <div>
         <table id=footer>
-            <th><button class="button button2">삭제</button></th>
             <th><button class="button button2">DB전송</button></th>
         </table>
     </div>
     <br>
-
-    <div class = "search">
-        <div class="paging">
-        <a href="../pop_up/Quick_move.html" onclick="window.open(this.href, '_blank', '/Quick_move'); return false">퀵</a>
-        <a href="#">&laquo;</a>
-        <a href="#">1</a>
-        <a href="#" class="active">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <a href="#">5</a>
-        <a href="#">6</a>
-        <a href="#">&raquo;</a>
-        </div>
-    </div>
 </body>
 </head>
 </html>

@@ -1,19 +1,27 @@
-from flask import Flask , render_template
-from dao import post_dao
+from flask import Flask , render_template, request, url_for
+from dao import post_dao, crowler
 import user_app
 
 app = Flask (__name__)
 
-#메인페이지
 @app.route('/index.html')
 @app.route('/')
 def index():
-    return render_template('index.html')
+    posts = post_dao.select_posts()
+    return render_template('index.html', posts=posts, date=post_dao.get_date())
 
-@app.route('/admin_page.html')
-def admin_page():
-
-    return render_template('admin_page.html')
+@app.route('/admin_page.html', methods=['POST', 'GET'])
+def admin_page(title_list=None, link_list=None, for_num=0):
+    if request.method == 'POST':
+        site_name = request.form['site_name']
+        cro = crowler.Crowler()
+        if site_name is not None:
+            title_list, link_list = cro.site(site_name).get_board()
+            return render_template('admin_page.html', title_list=title_list, link_list=link_list, for_num=len(title_list))
+        else:
+            return render_template('admin_page.html', title_list=None, link_list=None, for_num=0)
+    elif request.method == 'GET':
+        return render_template('admin_page.html', title_list=None, link_list=None, for_num=0)
 
 
 @app.route('/post.html')
@@ -42,12 +50,7 @@ def user_login():
 
 @app.route('/img_test.html')
 def img_test():
-
     return render_template('img_test.html')
 
-
-
-
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port="5104", debug=True)
-
+    app.run(debug=True, host="0.0.0.0", port="5114")  

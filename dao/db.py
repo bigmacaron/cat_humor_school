@@ -33,6 +33,3 @@ def excute_commit(*args, **kwargs):
         print(Exception)
         conn.rollback()
         raise Exception('rollbacked db')
-
-
-    

@@ -58,101 +58,21 @@
                 <th>게시글번호</th>
                 <th>제목</th>
                 <th>날짜</th>
-            </tr>
-            
-
-            <!--게시물-->
-            <tr id = post>              
-                <td>1</td>
-                <td><a href="/post.html">게시글 제목(작동되는거 이거 하나임)</a></td>
-                <td>2020-06-08</td>
-            </tr>
-
-            <tr id = post>              
-                <td>2</td>
-                <td><a href="#">게시글 제목(링크걸기)</a></td>
-                <td>2020-06-08</td>
-            </tr>
-
-            <tr id = post>              
-                <td>3</td>
-                <td><a href="#">게시글 제목(링크걸기)</a></td>
-                <td>2020-06-08</td>
-            </tr>
-
-            <tr id = post>              
-                <td>4</td>
-                <td><a href="#">게시글 제목(링크걸기)</a></td>
-                <td>2020-06-08</td>
-            </tr>
-
-            <tr id = post>              
-                <td>5</td>
-                <td><a href="#">게시글 제목(링크걸기)</a></td>
-                <td>2020-06-08</td>
-            </tr>
-
-            <tr id = post>              
-                <td>6</td>
-                <td><a href="#">게시글 제목(링크걸기)</a></td>
-                <td>2020-06-08</td>
-                
-            </tr>
-            <tr id = post>              
-                <td>7</td>
-                <td><a href="#">게시글 제목(링크걸기)</a></td>
-                <td>2020-06-08</td>
-                
-            </tr>
-            <tr id = post>              
-                <td>8</td>
-                <td><a href="#">게시글 제목(링크걸기)</a></td>
-                <td>2020-06-08</td>
-                
-            </tr>
-            <tr id = post>              
-                <td>9</td>
-                <td><a href="#">게시글 제목(링크걸기)</a></td>
-                <td>2020-06-08</td>
-                
-            </tr>
-            <tr id = post>              
-                <td>10</td>
-                <td><a href="#">게시글 제목(링크걸기)</a></td>
-                <td>2020-06-08</td>
-                
-            </tr>
-            <tr id = post>              
-                <td>11</td>
-                <td><a href="#">게시글 제목(링크걸기)</a></td>
-                <td>2020-06-08</td>
-                
-            </tr>
-            <tr id = post>              
-                <td>12</td>
-                <td><a href="#">게시글 제목(링크걸기)</a></td>
-                <td>2020-06-08</td>
-                
-            </tr>
-            <tr id = post>              
-                <td>13</td>
-                <td><a href="#">게시글 제목(링크걸기)</a></td>
-                <td>2020-06-08</td>
-                
-            </tr>
-            <tr id = post>              
-                <td>14</td>
-                <td><a href="#">게시글 제목(링크걸기)</a></td>
-                <td>2020-06-08</td>
-                
-            </tr>
-            <tr id = post>              
-                <td>15</td>
-                <td><a href="#">게시글 제목(링크걸기)</a></td>
-                <td>2020-06-08</td>
-                
-            </tr>
-            {% endblock %}
+            </tr>            
+            <form>
+                {% for post in posts %}
+                    <!-- 타이틀을 클릭했을 때 전달되는 값이 post_no이고, /post가 열려야한다. -->
+                    <!-- ... 링크에 form 형식으로 거는 방식이 있냐...? -->
+                    <!-- a 태그의 href에 submit을 거는 방법은? -->
+                    <!-- https://stackoverflow.com/questions/27539309/how-do-i-create-a-link-to-another-html-page/27540234 -->
+                    <tr id = post>
+                        <td>{{post['post_no']}}</td>
+                        <td><a href="post.html?post_no={{post.post_no}}">{{post['post_title']}}</a></td>
+                        <td>{{post['post_date']}}</td>
+                    </tr>
+                {% endfor %}
+            </form>
+        {% endblock %}
     </div>
         
         
@@ -163,6 +83,7 @@
     </div>
 
     <div class = "search">
+        <!-- 해당 부분의 로직은 어떻게 짜야 할까...? 일단, app.py에서 기본값으로 get 형식으로 page_no를 받아야지. -->
         {% block paging %}
         <div class="paging">
             <a href="/quick_move.html" onclick="window.open(this.href, '_blank', '/quick_move'); return false">퀵</a>
