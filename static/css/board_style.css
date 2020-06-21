@@ -32,7 +32,17 @@ a:visited {text-decoration: none; color: gray;}
 .login_page_button{
     font-family : "Nanum Gothic", sans-seif;
     font-size : 20px;
+    font-weight : bold;
     width: 100px;
+    height: 40px;
+    margin : 2%;
+}
+
+.info_page_button{
+    font-family : "Nanum Gothic", sans-seif;
+    font-size : 20px;
+    font-weight : bold;
+    width: 120px;
     height: 40px;
     margin : 2%;
 }
@@ -86,10 +96,35 @@ a:visited {text-decoration: none; color: gray;}
     left: 700px;
 }
 
+#info_page_background{
+    background-color: #f2f2f2;
+    border: 5px solid black;
+    margin : 35% auto;
+    padding : 5% 10%;
+    width: 50%;
+}
+
+#info_page_textbox{
+    border : 0px solid purple;
+    margin : 10% auto 5% auto;
+    text-align : center;
+    font-size : 28px;
+    font-weight : bold;
+    border-spacing: 30px;
+}
+
+#info_page_button{
+    position : relative;
+    margin-bottom : 10%;
+    top : 100%;
+    left : 50%;
+}
+
+
 #login_page_background{
     background-color: #f2f2f2;
     border: 5px solid black;
-    margin : 40% auto;
+    margin : 45% auto;
     padding : 5% 10%;
     width: 50%;
 }
@@ -107,22 +142,22 @@ a:visited {text-decoration: none; color: gray;}
     border : 0px solid purple;
     margin : 10% auto 5% auto;
     text-align : center;
-    font-size : 35px;
+    font-size : 45px;
     font-weight : bold;
     border-spacing: 30px;
-
 }
 
 #login_page_button{
     position : relative;
     margin-bottom : 10%;
     top : 100%;
-    left : 50%
+    left : 50%;
 }
 
 #login_page_search{
     text-align:center;
     padding:auto;
+    font-size : 35px;
 }
 
 #menu   {

@@ -1,27 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+
+    <link rel="stylesheet" type="text/css" href="static/css/board_style.css">
+
+    <meta charset="utf-8">
+    
+    <title>cat_humor_school</title>
+
+</head>
+
 {% extends "layout.html" %}
 
 <body>
+
     {% block post %}
-    <textarea name = "clause" rows="5" cols="30" readonly style="resize:none"> 약관</textarea>
 
-    동의함<input type="checkbox" name="xxx" value="yyy" checked style='width:20px; height:20px;'>
+    <div id = "info_page_background">
 
-    <h3 style='margin:5px 5px 10px 5px'> 회원아이디(이메일)  <input type = "TEXT" name="User_ID" size = 20></h3>
-    <button class = "button" onclick="location.href = 'user_login.html'">인증코드 보내기</button>
+        <textarea name = "clause" rows="5" cols="30" readonly style="resize:none"> 약관</textarea>
 
-    <h3 style='margin:5px 5px 10px 5px'> 이메일 인증 코드 <input type = "TEXT" name="User_PW" size = 20></h3>
-    <button class = "button" onclick="location.href = 'user_login.html'">인증코드 확인</button>
+        동의함<input type="checkbox" name="xxx" value="yyy" checked style='width:20px; height:20px;'>
 
-    <h3 style='margin:5px 5px 10px 5px'> 닉네임  <input type = "TEXT" name="User_Nick" size = 20></h3>
+        <h3 style='margin:5px 5px 10px 5px'> 회원아이디(이메일)  <input type = "TEXT" name="User_ID" size = 20></h3>
+        <button class = "button" onclick="location.href = 'user_login.html'">인증코드 보내기</button>
 
-    <h3 style='margin:5px 5px 10px 5px'> 패스워드 <input type = "TEXT" name="User_PW" size = 20></h3>
+        <h3 style='margin:5px 5px 10px 5px'> 이메일 인증 코드 <input type = "TEXT" name="User_PW" size = 20></h3>
+        <button class = "button" onclick="location.href = 'user_login.html'">인증코드 확인</button>
 
-    <h3 style='margin:5px 5px 10px 5px'> 패스워드 확인  <input type = "TEXT" name="User_CPW" size = 20></h3>
+        <h3 style='margin:5px 5px 10px 5px'> 닉네임  <input type = "TEXT" name="User_Nick" size = 20></h3>
+
+        <h3 style='margin:5px 5px 10px 5px'> 패스워드 <input type = "TEXT" name="User_PW" size = 20></h3>
+
+        <h3 style='margin:5px 5px 10px 5px'> 패스워드 확인  <input type = "TEXT" name="User_CPW" size = 20></h3>
 
 
-    <div>
-        <button class = "button" onclick="location.href = 'user_login.html'">취소</button>
-        <button class = "button" onclick="location.href = 'user_login.html'">가입하기</button>
+        <div>
+            <button class = "button" onclick="location.href = 'user_login.html'">취소</button>
+            <button class = "button" onclick="location.href = 'user_login.html'">가입하기</button>
+        </div>
+
+
     </div>
     {% endblock %}
     {% block list %}
