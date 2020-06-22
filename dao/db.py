@@ -1,6 +1,6 @@
 import sqlite3
 
-db_name = 'cat_humor_school.sqlite3'
+db_name = 'C:/Users/Exist/Desktop/cat_humor_school/cat_humor_school.sqlite3'
 
 def dict_factory(cursor, row):
     d = {}
@@ -29,7 +29,6 @@ def excute_commit(*args, **kwargs):
             cur.execute(*args, **kwargs)
             conn.commit()
             return cur.lastrowid
-    except Exception:
-        print(Exception)
+    except Exception as e:
         conn.rollback()
         raise Exception('rollbacked db')

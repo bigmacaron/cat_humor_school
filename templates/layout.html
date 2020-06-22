@@ -30,8 +30,8 @@
         {% block post %}
         <div>
             <table id = "board_header">
-                <th>제목</th>
-                <th>작성일</th>
+                <th>{{post.post_title}}</th>
+                <th>{{post.post_date}}</th>
             </table>
         </div>
 
@@ -39,8 +39,7 @@
             <!-- 시작 -->
             <div><br></div> 
             <div><br></div> 
-            <div> <div style="text-align:center;"><img src="http://thimg.todayhumor.co.kr/upfile/202006/1591877770db37675ba46e4973874697020f4bbe04__mn792537__w857__h1440__f94203__Ym202006.png" width=100% height=100% alt="2.jpg" class="chimg_photo tcx_image" style="border:none;" filesize="655793" id="img1"></div> 
-            <!-- <div style="text-align:center;"><img src="http://thimg.todayhumor.co.kr/upfile/202006/1591287505b5a3a3fc17ff4b5d97f75ba0d8074fc1__mn125052__w810__h7742__f579447__Ym202006.jpg" width=100% height=100% alt="3.jpg" class="chimg_photo tcx_image" style="border:none;" filesize="579447" id="img2"></div> -->
+            {{ post.post_cnts | safe }}
             <br></div> <div><br></div>
             <!-- 끝 -->
         </div>
@@ -99,6 +98,6 @@
         </div>
         {% endblock %}
     </div>
-    </body>
+</body>
 </head>
 </html>
