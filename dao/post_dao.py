@@ -1,4 +1,4 @@
-import db
+from dao import db
 import time
 
 def get_date():

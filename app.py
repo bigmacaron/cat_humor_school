@@ -32,7 +32,7 @@ def admin_page(title_list=None, link_list=None, for_num=0):
             return render_template('admin_page.html', title_list=None, link_list=None, for_num=0)
     elif request.method == 'GET':
         return render_template('admin_page.html', title_list=None, link_list=None, for_num=0)
-    
+
 @app.route('/post.html')
 def post():
     posts = post_dao.select_posts()
@@ -44,7 +44,7 @@ def post():
             print("!!! POST 진입, post_no 발견.")
             post = post_dao.select_post(request.args.get("post_no"))
             print(post)
-            return render_template('post.html', post = post, posts=posts, date=post_dao.get_date())
+            return render_template('post.html', post=post, posts=posts, date=post_dao.get_date())
     else:
         print("Error")
 
