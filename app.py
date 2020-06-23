@@ -7,8 +7,22 @@ app = Flask (__name__)
 @app.route('/index.html', methods=['POST', 'GET'])
 @app.route('/', methods=['POST', 'GET'])
 def index():
-    posts = post_dao.select_posts()
-    return render_template('index.html', posts=posts, date=post_dao.get_date())
+    if request.method == 'GET':
+        if request.args.get('page'):
+            page_num = int(request.args.get('page'))
+            start_num = (page_num + 4) // 5
+            page_num_list = [n for n in range((start_num-1)*5+1, ((start_num-1)*5)+6)]
+            if min(page_num_list) <= 0:
+                page_num_list = [1, 2, 3, 4, 5]
+            posts = post_dao.select_posts(page_num)
+            return render_template('index.html', posts=posts, date=post_dao.get_date(), page=None, page_num_list=page_num_list)
+        else:
+            posts = post_dao.select_posts()
+            page_num_list = [1, 2, 3, 4, 5]
+            return render_template('index.html', posts=posts, date=post_dao.get_date(), page=None, page_num_list=page_num_list)
+    if request.method == 'POST':
+        posts = post_dao.select_posts()
+        return render_template('index.html', posts=posts, date=post_dao.get_date(), page=None, page_num_list=None)
 
 @app.route('/admin_page.html', methods=['POST', 'GET'])
 def admin_page(title_list=None, link_list=None, for_num=0):
