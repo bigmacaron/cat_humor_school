@@ -34,7 +34,7 @@
 
     <div id = "info_page_background">
 
-        <div>
+        <div id = "info_cat_image">
             <button type="submit" onclick=button_oneclick() style="background-color:white"><img class="btn-img" src="static/img/user_info_icon.png"></button>
         </div>  
         
@@ -61,14 +61,10 @@
             </tr>
 
             <tr>
-                <td>비밀번호 변경확인</td>
+                <td>비밀번호 변경<br>확인</td>
                 <td><input type = "TEXT" name="User_ID" style="width:200px; height:40px"></td>
             </tr>
 
-            <tr>
-                <td>ID</td>
-                <td><input type = "TEXT" name="User_ID" style="width:200px; height:40px"></td>
-            </tr>
         </table>
 
     <!--
@@ -85,6 +81,7 @@
             <button class = "info_page_button" onclick="location.href = '#'">댓글 이력</button>
             <button class = "info_page_button" onclick="location.href = 'user_login.html'">로그아웃</button>
         </div>
+        
         {% endblock %}
         {% block list %}
         {% endblock %}

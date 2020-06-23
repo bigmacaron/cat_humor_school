@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+
+    <link rel="stylesheet" type="text/css" href="static/css/board_style.css">
+
+    <meta charset="utf-8">
+    
+    <title>cat_humor_school</title>
+
+</head>
+
+{% extends "layout.html" %}
+
+<body>
+
+    {% block post %}
+
+    <div>
+        <table id = "user_comment_header">
+
+            <!--헤더-->
+            <tr id = "user_comment_header_title">  
+                <th>아이디</th>
+                <th>댓글내용</th>
+                <th>작성시간</th>
+            </tr>     
+            
+            <!-- 내용 이력-->
+            <tr id = "user_comment_content">
+                <td>ㅁㄴㅇㄹ</td>
+                <td>adsf</td>
+                <td>1234</td>
+            </tr>
+
+            <tr id = "user_comment_content">
+                <td>ㅁㄴㅇㄹ</td>
+                <td>adsf</td>
+                <td>1234</td>
+            </tr>
+
+    </div>
+    {% endblock %}
+    {% block list %}
+    {% endblock %}
+    {% block paging %}
+    {% endblock %}
+</body>
+</html>
