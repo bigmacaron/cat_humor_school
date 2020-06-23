@@ -24,9 +24,14 @@ def admin_page(title_list=None, link_list=None, for_num=0):
         return render_template('admin_page.html', title_list=None, link_list=None, for_num=0)
 
 
+
 @app.route('/post.html')
 def post():
     return render_template('post.html')
+
+@app.route('/post_comment.html')
+def post_comment():
+    return render_template('/post_comment.html')
 
 @app.route('/quick_move.html')
 def quick_move():
@@ -48,9 +53,14 @@ def user_join():
 def user_login():
     return render_template('user_login.html')
 
+@app.route('/user_comment.html')
+def user_commnet():
+    return render_template('user_comment.html')
+
 @app.route('/img_test.html')
 def img_test():
     return render_template('img_test.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0")  
