@@ -266,6 +266,7 @@ class Crowler:
     @staticmethod
     def get_random_header():
         user_agent = UserAgent(verify_ssl=False).random
+        # user_agent = "Mozilla/5.0 (Linux; Android 8.1.0; Moto G (5S) Plus) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.111 Mobile Safari/537.36"
         header = {'User-Agent' : user_agent}
         return header
 
@@ -294,7 +295,7 @@ if __name__ == "__main__":
     print(data)
 
     # 해당 사이트의 게시물을 크롤링한다.
-    data = cro.site('NATEPANN').get_post('https://pann.nate.com/talk/352201801?page=1')
+    data = cro.site('DCINSIDE').get_post('https://m.dcinside.com/board/issuezoom/8409')
     print(data)
     # 네이트판 = https://pann.nate.com/talk/352201801?page=1
     # 디씨 = https://gall.dcinside.com/board/view/?id=issuezoom&no=8409&_rk=unp&page=1

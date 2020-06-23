@@ -23,7 +23,7 @@ def select_posts(page=1):
     return reversed(db.select_all('''SELECT * FROM post where post_no BETWEEN ? AND ?''', (page_start_post_no, page_last_post_no)))
 
 def select_post(no):
-    return db.select_one('''SELECT * FROM post WHERE no=?''', (no,))
+    return db.select_one('''SELECT * FROM post WHERE post_no=?''', (no,))
 
 def update_post(no, post_site_name, post_title, post_cnts, post_date):
     # 업데이트 기능이 필요 없다고 판단하여 아직 건들지 않음.

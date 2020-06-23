@@ -29,7 +29,6 @@ def excute_commit(*args, **kwargs):
             cur.execute(*args, **kwargs)
             conn.commit()
             return cur.lastrowid
-    except Exception:
-        print(Exception)
+    except Exception as e:
         conn.rollback()
         raise Exception('rollbacked db')

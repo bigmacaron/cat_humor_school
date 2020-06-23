@@ -30,8 +30,8 @@
         {% block post %}
         <div>
             <table id = "board_header">
-                <th>제목</th>
-                <th>작성일</th>
+                <th>{{post.post_title}}</th>
+                <th>{{post.post_date}}</th>
             </table>
         </div>
 
@@ -39,8 +39,7 @@
             <!-- 시작 -->
             <div><br></div> 
             <div><br></div> 
-            <div> <div style="text-align:center;"><img src="http://thimg.todayhumor.co.kr/upfile/202006/1591877770db37675ba46e4973874697020f4bbe04__mn792537__w857__h1440__f94203__Ym202006.png" width=100% height=100% alt="2.jpg" class="chimg_photo tcx_image" style="border:none;" filesize="655793" id="img1"></div> 
-            <!-- <div style="text-align:center;"><img src="http://thimg.todayhumor.co.kr/upfile/202006/1591287505b5a3a3fc17ff4b5d97f75ba0d8074fc1__mn125052__w810__h7742__f579447__Ym202006.jpg" width=100% height=100% alt="3.jpg" class="chimg_photo tcx_image" style="border:none;" filesize="579447" id="img2"></div> -->
+            {{ post.post_cnts | safe }}
             <br></div> <div><br></div>
             <!-- 끝 -->
         </div>
@@ -83,22 +82,45 @@
     </div>
 
     <div class = "search">
-        <!-- 해당 부분의 로직은 어떻게 짜야 할까...? 일단, app.py에서 기본값으로 get 형식으로 page_no를 받아야지. -->
         {% block paging %}
         <div class="paging">
+            
+            <!-- 자바스크립트를 활용하여 팝업창으로 변경하는 것이 좋아보인다. -->
             <a href="/quick_move.html" onclick="window.open(this.href, '_blank', '/quick_move'); return false">퀵</a>
-            <a href="#">&laquo;</a>
-            <a href="#">1</a>
-            <a href="#" class="active">2</a>
-            <a href="#">3</a>
-            <a href="#">4</a>
-            <a href="#">5</a>
-            <a href="#">6</a>
-            <a href="#">&raquo;</a>
-        
+
+            {% if page_num_list %}
+
+                {% if not page_num_list[0] <= 1 %}
+                    <a href="index.html?page={{page_num_list[0]-5}}">&laquo;</a>
+                {% endif %}
+
+                {% if page_num_list == None %}
+                    <a href="index.html?page=1">1</a>
+                    <a href="index.html?page=2">2</a>
+                    <a href="index.html?page=3">3</a>
+                    <a href="index.html?page=4">4</a>
+                    <a href="index.html?page=5">5</a>
+                {% else %}
+                    {% for page_num in page_num_list %}
+                    <a href="/index.html?page={{page_num}}">{{page_num}}</a>
+                    {% endfor %}
+                {% endif %}
+
+                <a href="index.html?page={{page_num_list[0]+5}}">&raquo;</a>
+            {% endif %}
         </div>
         {% endblock %}
     </div>
-    </body>
+</body>
 </head>
 </html>
+
+<script type="text/javascript">
+    function func_prompt() {
+        if(prompt('id')==='12345'){
+            alert("12345");
+        } else {
+            alert("false");
+        }
+    }
+</script>
