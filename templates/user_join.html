@@ -4,19 +4,73 @@
     {% block post %}
     <textarea name = "clause" rows="5" cols="30" readonly style="resize:none"> 약관</textarea>
 
-    동의함<input type="checkbox" name="xxx" value="yyy" checked style='width:20px; height:20px;'>
+    <div id = "join_page_background">
 
-    <h3 style='margin:5px 5px 10px 5px'> 회원아이디(이메일)  <input type = "TEXT" name="User_ID" size = 20></h3>
-    <button class = "button" onclick="location.href = 'user_login.html'">인증코드 보내기</button>
+        <textarea id ="join_term" name = "clause" readonly>
+약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관
+약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관
+약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관
+약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관
+약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관
+약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관
+약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관
+약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관
+약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관
+약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관
+약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관
+약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관약관
+        </textarea>
 
-    <h3 style='margin:5px 5px 10px 5px'> 이메일 인증 코드 <input type = "TEXT" name="User_PW" size = 20></h3>
-    <button class = "button" onclick="location.href = 'user_login.html'">인증코드 확인</button>
+        <div id = "join_agree">
+            동의함<input type="checkbox" name="xxx" value="yyy" checked style='width:20px; height:20px;'>
+        </div>
 
-    <h3 style='margin:5px 5px 10px 5px'> 닉네임  <input type = "TEXT" name="User_Nick" size = 20></h3>
+        <div>
+            <table id = "join_page_textbox">
+                <tr>
+                    <td id = join_page_table>회원아이디<br>(이메일)</td>
+                    <td><input type = "TEXT" name="User_ID" size = 16 style="width:200px; height:40px">
+                        <br><br>이메일이 중복되었습니다</td>
+                    <td><button class = "join_page_button" onclick="location.href = 'user_login.html'">인증코드 보내기</button></td>
 
-    <h3 style='margin:5px 5px 10px 5px'> 패스워드 <input type = "TEXT" name="User_PW" size = 20></h3>
+                </tr>
+                
+                <tr>
+                    <td>이메일<br>인증 코드
+                    <td><input type = "TEXT" name="User_PW" size = 16 style="width:200px; height:40px">
+                        <br><br>인증코드가 일치하지 않습니다.</td>
+                    <td><button class = "join_page_button" onclick="location.href = 'user_login.html'">인증코드 확인</button></td>
+                </tr>
 
-    <h3 style='margin:5px 5px 10px 5px'> 패스워드 확인  <input type = "TEXT" name="User_CPW" size = 20></h3>
+                <tr>
+                    <td>닉네임</td>
+                    <td><input type = "TEXT" name="User_Nick" size = 16 style="width:200px; height:40px">
+                        <br><br>닉네임이 중복되었습니다.</td>
+                </tr>
+
+                    <td>패스워드</td>
+                    <td><input type = "TEXT" name="User_PW" size = 16 style="width:200px; height:40px">
+                        <br><br>8자리 이상<br>영어와
+                        숫자의 조합</td>
+                </tr>
+                
+                    <td>패스워드<br>확인</td>
+                    <td><input type = "TEXT" name="User_CPW" size = 16 style="width:200px; height:40px">
+                        <br><br>비밀번호가 일치하지 않습니다.</td>
+
+                </tr>
+            </table>
+        </div>
+
+        <div>
+            <table id = "join_page_regist">
+                <tr>
+                <td><button class = "join_page_regist_button" onclick="location.href = 'user_login.html'">취소</button></td>
+
+                <td><button class = "join_page_regist_button" onclick="location.href = 'user_login.html'">가입하기</button></td>
+                </tr>
+            </table>
+        </div>
 
 
     <div>

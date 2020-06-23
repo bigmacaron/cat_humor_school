@@ -62,6 +62,10 @@ def post():
     else:
         print("Error")
 
+@app.route('/post_comment.html')
+def post_comment():
+    return render_template('/post_comment.html')
+
 @app.route('/quick_move.html')
 def quick_move():
     return render_template('quick_move.html')
@@ -81,6 +85,10 @@ def user_join():
 @app.route('/user_login.html')
 def user_login():
     return render_template('user_login.html')
+
+@app.route('/user_comment.html')
+def user_commnet():
+    return render_template('user_comment.html')
 
 @app.route('/img_test.html')
 def img_test():
