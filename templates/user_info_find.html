@@ -2,25 +2,38 @@
 
 <body>
     {% block post %}
-    아이디(이메일) 찾기
-    <h3 style='margin:5px 5px 10px 5px'> 닉네임을  입력하세요  <input type = "TEXT" name="User_ID" size = 20></h3>
-    <button class = "button" onclick="#">찾기</button>
-    <hr>
-    비밀번호 찾기
-    <h3 style='margin:5px 5px 10px 5px'> 이메일을 입력하세요<input type = "TEXT" name="User_PW" size = 20></h3>
-    <button class = "button" onclick="#">찾기</button>
+
+    <div id = user_find_background>
+        <div id = "user_find_ID">
+            <input id = "user_find_ID_input" type = "TEXT" name="User_ID"  placeholder = "닉네임을 입력하세요"></h3>
+            <button class = "user_find_ID_button" onclick="#">아이디 찾기</button>
+        </div>
+
     <hr>
 
-    <a href = "../#">문의하기</a>
-    <button class = "button" onclick="location.href = 'user_login.html'">뒤로가기</button>
-<br>
-    <a href = "/">인덱스 페이지로(임시)</a>
+        <div id = "user_find_PW">
+            <input id = "user_find_ID_input" type = "TEXT" name="User_PW" size = 20  placeholder = "이메일을 입력하세요"></h3>
+            <button class = "user_find_PW_button" onclick="#">비밀번호 찾기</button>
+        </div>
+
+    </div>
+    
+    <div>
+        <a href = "../#" style = " margin : 10% 0 0 35%;">문의하기</a>
+        <button class = "button" onclick="location.href = 'user_login.html'">뒤로가기</button>
+
+    </div>
+
+    
+
     {% endblock %}
     {% block list %}
     {% endblock %}
     {% block paging %}
     {% endblock %}
-    
+
+
+
 </body>
 </html>
 

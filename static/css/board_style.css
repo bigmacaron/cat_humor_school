@@ -71,6 +71,21 @@ a:visited {text-decoration: none; color: gray;}
     height: 50px;
     padding : 10%;
 }
+
+.user_find_ID_button{
+    width: 120px;
+    height: 70px;
+    font-size : 20px;
+    margin : 8% auto 8% 60%;
+}
+
+.user_find_PW_button{
+    width: 120px;
+    height: 70px;
+    font-size : 20px;
+    margin : 8% auto 8% 60%;
+}
+
 #board_header  {
     font-family : "Nanum Gothic", sans-seif;
     font-size : 40px;
@@ -190,7 +205,7 @@ a:visited {text-decoration: none; color: gray;}
 #login_page_background{
     background-color: #f2f2f2;
     border: 1px solid black;
-    margin : 5% auto;
+    margin : 40% auto;
     padding : 5% 10%;
     width: 50%;
     
@@ -338,4 +353,38 @@ a:visited {text-decoration: none; color: gray;}
     border-bottom: 2px solid rgb(230, 230, 230);
     text-align : center;
     background-color: white;
+}
+
+#user_find_background{
+    background-color: #f2f2f2;
+    border: 1px solid black;
+    margin : 35% auto;
+    padding : 5% 5%;
+    width: 50%;
+}
+
+#user_find_ID{
+    font-size : 30px;
+    margin-left : 10%;
+    padding : auto;
+}
+
+#user_find_ID_input{
+    font-size : 30px;
+    width:300px;
+    height:60px;
+}
+
+#user_find_PW{
+    font-size : 30px;
+    margin-top : 10%;
+    margin-left : 10%;
+
+    padding : auto;
+}
+
+#user_find_PW_input{
+    font-size : 30px;
+    width:300px;
+    height:60px;
 }
