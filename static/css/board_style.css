@@ -43,6 +43,7 @@ a:visited {text-decoration: none; color: gray;}
     font-weight : bold;
     width: 60px;
     height: 60px;
+    margin : 10% 20%;
 }
 
 .info_page_button{
@@ -358,7 +359,7 @@ a:visited {text-decoration: none; color: gray;}
 #user_find_background{
     background-color: #f2f2f2;
     border: 1px solid black;
-    margin : 35% auto;
+    margin : 35% auto 10% auto;
     padding : 5% 5%;
     width: 50%;
 }
@@ -388,3 +389,10 @@ a:visited {text-decoration: none; color: gray;}
     width:300px;
     height:60px;
 }
+
+#user_find_ask{
+    margin : auto;
+    width : 40%;
+    text-align : center;
+    font-size : 30px;
+    }
