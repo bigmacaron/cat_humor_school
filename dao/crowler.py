@@ -50,6 +50,7 @@ class Crowler:
 
         def get_beautifulsoup(self, link=None):
             header = Crowler.get_random_header()
+            header['Content-Type'] = 'application/json; charset=utf-8'
             if link:
                 html_text = requests.get(link, headers = header).text
             else:
@@ -287,16 +288,15 @@ if __name__ == "__main__":
     cro = Crowler()
 
     # 사이트 리스트를 출력한다.
-    print(cro.get_site_list())
+    # print(cro.get_site_list())
     # ['DCINSIDE', 'ETOLAND', 'FMKOREA', 'HUMORUNIV', 'INVEN', 'NATEPANN', 'PPOMPPU', 'RULIWEB', 'TODAYHUMOR', 'YGOSU']
 
-    # 해당 사이트의 게시판을 크롤링한다.
-    data = cro.site('NATEPANN').get_board()
-    print(data)
+    # # 해당 사이트의 게시판을 크롤링한다.
+    # data = cro.site('NATEPANN').get_board()
+    # print(data)
 
     # 해당 사이트의 게시물을 크롤링한다.
-    data = cro.site('DCINSIDE').get_post('https://m.dcinside.com/board/issuezoom/8409')
-    print(data)
+    data = cro.site('DCINSIDE').get_post('https://gall.dcinside.com/board/view/?id=issuezoom&no=8352&_rk=tDL&page=5')[1]
     # 네이트판 = https://pann.nate.com/talk/352201801?page=1
     # 디씨 = https://gall.dcinside.com/board/view/?id=issuezoom&no=8409&_rk=unp&page=1
     # 루리웹 = https://bbs.ruliweb.com/best/board/300143/read/47511668
@@ -307,3 +307,11 @@ if __name__ == "__main__":
     # 웃대 = http://web.humoruniv.com/board/humor/read.html?table=pick&pg=0&number=969032
     # 이토랜드 = http://www.etoland.co.kr/bbs/board.php?bo_table=etohumor03&wr_id=630073&sfl=top_n&stx=day&sst=wr_hit&sod=desc
     # 인벤 = http://www.inven.co.kr/board/webzine/2097/1432455?my=chu&category=%EC%9C%A0%EB%A8%B8&iskin=webzine
+    print(data)
+
+    # 게시물 크롤링으로 반환된 값들중 src형식의 값들을 가져온다.
+    img_tags = data.select('*[src]')
+
+    # 해당 이미지들 중에서 html의 타입과 링크만을 추출한다.
+    tag, link = [(link.name, link['src']) for link in img_tags]
+    print(tag, link)
