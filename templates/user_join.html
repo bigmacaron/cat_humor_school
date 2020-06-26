@@ -23,7 +23,11 @@
         <div id = "join_agree">
             동의함<input type="checkbox" name="xxx" value="yyy" checked style='width:20px; height:20px;'>
         </div>
+
         <form method="POST">
+
+            <!-- input에 required 를 사용하면 칸이 비어있을경우 표시를 해줌-->
+
             <div>            
                 <table id = "join_page_textbox">
                     <tr>
@@ -32,16 +36,6 @@
                             <br><br>이메일이 중복되었습니다</td>
                         <td><button class = "join_page_button" type="submit">인증코드 보내기</button></td>
 
-<<<<<<< HEAD
-        <!-- input 태그내에 required 를 추가하면 제출전 비어있을시 명시해줌-->
-        <div>
-            <table id = "join_page_textbox">
-                <tr>
-                    <td id = join_page_table>회원아이디<br>(이메일)</td>
-                    <td><input type = "TEXT" name="user_id" size = 16 style="width:200px; height:40px">
-                        <br><br>이메일이 중복되었습니다</td>
-                    <td><button class = "join_page_button" onclick="location.href = 'user_login.html'">인증코드 보내기</button></td>
-=======
                     </tr>
                     
                     <!-- <tr>
@@ -50,7 +44,6 @@
                             <br><br>인증코드가 일치하지 않습니다.</td>
                         <td><button class = "join_page_button" type="submit">인증코드 확인</button></td>
                     </tr> -->
->>>>>>> 02b71cbeecfa368dad8f0651f8c9a09ca57e9adc
 
                     <tr>
                         <td>닉네임</td>
