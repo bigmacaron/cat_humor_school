@@ -1,123 +1,129 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
 
     <link rel="stylesheet" type="text/css" href="static/css/board_style.css">
 
     <meta charset="utf-8">
-    
+
     <title>cat_humor_school</title>
 
 </head>
 {% block script%}
 {% endblock%}
+
 <body>
-    <header id = header>
+    <header id=header>
         {% block header %}
 
         <header>
             <div>
-                <a href="/user_login.html"><img src = "static/img/menu.png"  style="height:80px; float:left; margin: 0 0 0 2%"></a>
-                
+                <a href="/user_login.html"><img src="static/img/menu.png"
+                        style="height:80px; float:left; margin: 0 0 0 2%"></a>
+
             </div>
-            <div id = "header">
-                <a href="/"><img src = "/static/img/title.png" height="80px"></a>
+            <div id="header">
+                <a href="/"><img src="/static/img/title.png" height="80px"></a>
             </div>
-        </header> 
+        </header>
         {% endblock %}
-    </header>          
+    </header>
     <section>
         {% block post %}
         <div>
-            <table id = "board_header">
+            <table id="board_header">
                 <th>{{post.post_title}}</th>
                 <th>{{post.post_date}}</th>
             </table>
         </div>
 
-        <div id = "Post">
+        <div id="Post">
             <!-- 시작 -->
-            <div><br></div> 
-            <div><br></div> 
+            <div><br></div>
+            <div><br></div>
             {{ post.post_cnts | safe }}
-            <br></div> <div><br></div>
-            <!-- 끝 -->
+            <br>
+        </div>
+        <div><br></div>
+        <!-- 끝 -->
         </div>
         {% endblock %}
     </section>
-        {% block test %}
-        {% endblock %}
+    {% block test %}
+    {% endblock %}
 
     <div>
         {% block list %}
-        <table id = "board_header">
+        <table id="board_header">
 
             <!--헤더-->
-            <tr id = board_header_title>  
+            <tr id=board_header_title>
                 <th>게시글번호</th>
                 <th>제목</th>
                 <th>날짜</th>
-            </tr>            
+            </tr>
             <form>
                 {% for post in posts %}
-                    <!-- 타이틀을 클릭했을 때 전달되는 값이 post_no이고, /post가 열려야한다. -->
-                    <!-- ... 링크에 form 형식으로 거는 방식이 있냐...? -->
-                    <!-- a 태그의 href에 submit을 거는 방법은? -->
-                    <!-- https://stackoverflow.com/questions/27539309/how-do-i-create-a-link-to-another-html-page/27540234 -->
-                    <tr id = post>
-                        <td>{{post['post_no']}}</td>
-                        <td><a href="post.html?post_no={{post.post_no}}">{{post['post_title']}}</a></td>
-                        <td>{{post['post_date']}}</td>
-                    </tr>
+                <!-- 타이틀을 클릭했을 때 전달되는 값이 post_no이고, /post가 열려야한다. -->
+                <!-- ... 링크에 form 형식으로 거는 방식이 있냐...? -->
+                <!-- a 태그의 href에 submit을 거는 방법은? -->
+                <!-- https://stackoverflow.com/questions/27539309/how-do-i-create-a-link-to-another-html-page/27540234 -->
+                <tr id=post>
+                    <td>{{post['post_no']}}</td>
+                    <td><a href="post.html?post_no={{post.post_no}}">{{post['post_title']}}</a></td>
+                    <td>{{post['post_date']}}</td>
+                </tr>
                 {% endfor %}
             </form>
-        {% endblock %}
+            {% endblock %}
     </div>
-        
-        
+
+
     <div>
         <table id=footer>
 
         </table>
     </div>
 
-    <div class = "search">
+    <div class="search">
         {% block paging %}
         <div class="paging">
-            
+
             <!-- 자바스크립트를 활용하여 팝업창으로 변경하는 것이 좋아보인다. -->
             <a href="/quick_move.html" onclick="window.open(this.href, '_blank', '/quick_move'); return false">퀵</a>
 
             {% if page_num_list %}
 
-                {% if not page_num_list[0] <= 1 %}
-                    <a href="index.html?page={{page_num_list[0]-5}}">&laquo;</a>
-                {% endif %}
+            {% if not page_num_list[0] <= 1 %}
+            <a href="index.html?page={{page_num_list[0]-5}}">&laquo;</a>
+            {% endif %}
 
-                {% if page_num_list == None %}
-                    <a href="index.html?page=1">1</a>
-                    <a href="index.html?page=2">2</a>
-                    <a href="index.html?page=3">3</a>
-                    <a href="index.html?page=4">4</a>
-                    <a href="index.html?page=5">5</a>
-                {% else %}
-                    {% for page_num in page_num_list %}
-                    <a href="/index.html?page={{page_num}}">{{page_num}}</a>
-                    {% endfor %}
-                {% endif %}
+            {% if page_num_list == None %}
+            <a href="index.html?page=1">1</a>
+            <a href="index.html?page=2">2</a>
+            <a href="index.html?page=3">3</a>
+            <a href="index.html?page=4">4</a>
+            <a href="index.html?page=5">5</a>
+            {% else %}
+            {% for page_num in page_num_list %}
+            <a href="/index.html?page={{page_num}}">{{page_num}}</a>
+            {% endfor %}
+            {% endif %}
 
-                <a href="index.html?page={{page_num_list[0]+5}}">&raquo;</a>
+            <a href="index.html?page={{page_num_list[0]+5}}">&raquo;</a>
             {% endif %}
         </div>
         {% endblock %}
     </div>
 </body>
 </head>
+
 </html>
 
 <script type="text/javascript">
     function func_prompt() {
-        if(prompt('id')==='12345'){
+        if (prompt('id') === '12345') {
             alert("12345");
         } else {
             alert("false");

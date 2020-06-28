@@ -1,5 +1,6 @@
 import re
 import requests
+import os
 from bs4 import BeautifulSoup
 from abc import abstractmethod, ABCMeta
 from fake_useragent import UserAgent
@@ -48,6 +49,7 @@ class Crowler:
             soup = self.get_beautifulsoup(link)
             title = re.sub(r' :.*', '', soup.head.title.text)
             content = soup.find(id='contentArea')
+            Crowler.edit_cnt(content)
             return title, content
 
     class DCINSIDE(Site):
@@ -75,6 +77,7 @@ class Crowler:
             soup = self.get_beautifulsoup(link)
             title = re.sub(r' - .*', '', soup.find(name='title').text)
             content = soup.find(style='overflow:hidden;')
+            Crowler.edit_cnt(content)
             return title, content
 
     class RULIWEB(Site):
@@ -100,6 +103,7 @@ class Crowler:
             soup = self.get_beautifulsoup(link)
             title = re.sub(r' \|.*', '', soup.title.text)
             content = soup.select('.view_content')[0]
+            Crowler.edit_cnt(content, head='https:')
             return title, content
 
     class PPOMPPU(Site):
@@ -126,6 +130,7 @@ class Crowler:
             soup = self.get_beautifulsoup(link)
             title = soup.find(property='og:title')['content']
             content = soup.select('.pic_bg')[2]
+            Crowler.edit_cnt(content, head='https:')
             return title, content
 
     class FMKOREA(Site):
@@ -152,6 +157,7 @@ class Crowler:
             soup = self.get_beautifulsoup(link)
             title = re.sub(r' - .*', '', soup.find('title').text)
             content = soup.article.div
+            Crowler.edit_cnt(content, head='https:')
             return title, content
 
     class TODAYHUMOR(Site):
@@ -178,6 +184,7 @@ class Crowler:
             soup = self.get_beautifulsoup(link)
             title = soup.find(property='og:title').text
             content = soup.select('.viewContent')[0]
+            Crowler.edit_cnt(content)
             return title, content
 
     class YGOSU(Site):
@@ -202,6 +209,7 @@ class Crowler:
             soup = self.get_beautifulsoup(link)
             title = soup.find(name='title').text
             content = soup.select('.container')[0]
+            Crowler.edit_cnt(content)
             return title, content
 
     class HUMORUNIV(Site):
@@ -230,6 +238,7 @@ class Crowler:
             soup = self.get_beautifulsoup(link)
             title = re.sub(r' ::.*', '', soup.head.title.text)
             content = soup.find(id='cnts')
+            Crowler.edit_cnt(content)
             return title, content
 
     class ETOLAND(Site):
@@ -256,6 +265,7 @@ class Crowler:
             soup = self.get_beautifulsoup(link)
             title = soup.find(name='title').text
             content = soup.find(id='view11_content')
+            Crowler.edit_cnt(content, head='http://www.etoland.co.kr')
             return title, content
 
     class INVEN(Site):
@@ -281,6 +291,7 @@ class Crowler:
             soup = self.get_beautifulsoup(link)
             title = re.sub(r' - .*', '', soup.find(name='title').text)
             content = soup.find(id='powerbbsContent')
+            Crowler.edit_cnt(content)
             return title, content
 
     ####################################################################################################
@@ -290,6 +301,31 @@ class Crowler:
 
     def __init__(self):
         self._site = None
+
+    @staticmethod
+    def edit_cnt(soup, head=""):
+        img_tags = soup.select('*[src]')
+        tag_and_link = [(tag, tag['src']) for tag in img_tags if any(tag['src'].endswith(
+            ext) for ext in ('jpg', 'jpeg', 'png', 'mp4', 'webm', 'gif', 'mp4?d', 'WEBP'))]
+        for tag, link in tag_and_link:
+            try:
+                file_name = Crowler.downloader(link, head)
+                tag['src'] = "./static/img/"+file_name
+            except:
+                pass
+
+    @staticmethod
+    def downloader(link, head=""):
+        print("다운로드중인 파일 링크 = ", link)
+        file_name = os.path.basename(link)
+        if link.endswith('?d'):
+            file_name = os.path.basename(link)[:-2]
+        try:
+            req = requests.get("{}{}".format(head, link), allow_redirects=True)
+            open("./static/img/"+file_name, 'wb').write(req.content)
+        except:
+            pass
+        return file_name
 
     @staticmethod
     def get_random_header():
@@ -341,28 +377,33 @@ if __name__ == "__main__":
     cnt = cro.site('INVEN').get_post(
         'http://www.inven.co.kr/board/webzine/2097/1442305?my=chu&category=%EC%9C%A0%EB%A8%B8&iskin=webzine')[1]
 
-    # 게시물 크롤링으로 반환된 값들중 src형식의 값들을 가져온다.
-    img_tags = cnt.select('*[src]')
+    print(cnt)
 
-    # 해당 이미지들 중에서 html의 타입과 링크만을 추출한다.
-    f = [(link.name, link['src'])
-         for link in img_tags if any(link['src'].endswith(ext) for ext in ('jpg', 'jpeg', 'png', 'mp4', 'webm', 'gif', 'mp4?d', 'WEBP'))]
+    # # 게시물 크롤링으로 반환된 값들중 src형식의 값들을 가져온다.
+    # img_tags = cnt.select('*[src]')
 
-    for tag, link in f:
-        print(tag, link)
-        print(os.path.basename(link))
-        if link.endswith('?d'):
-            file_name = os.path.basename(link)[:-2]
-        else:
-            file_name = os.path.basename(link)
-        # 네이트판 = 링크 그대로 받으면 된다.
-        # 디씨 = 파일의 확장자를 알아낼 방법이 지나치게 복잡하다. 포기.
-        # 루리웹 = "https:{}".format(link[:2])
-        # 뽐뿌 = 'https:{}'.format(link)
-        # 에펨 = 'https:{}'.format(link)
-        # 뽐뿌 = 링크 그대로 받으면 된다.
-        # 와고 = 링크 그대로 받으면 된다.
-        # 웃대 = 파일 링크 형식이 이상하다. gif, mp4, 몇몇 이미지가 클릭해야만 본래 파일로 들어가지는 형식. 해결 가능하려나?
-        # 이토렌드 = "http://www.etoland.co.kr{}".format(link)
-        r = requests.get("{}".format(link), allow_redirects=True)
-        open(file_name, 'wb').write(r.content)
+    # # 해당 이미지들 중에서 html의 타입과 링크만을 추출한다.
+    # f = [(link, link['src'])
+    #      for link in img_tags if any(link['src'].endswith(ext) for ext in ('jpg', 'jpeg', 'png', 'mp4', 'webm', 'gif', 'mp4?d', 'WEBP'))]
+
+    # for tag, link in f:
+    #     print(os.path.basename(link))
+    #     if link.endswith('?d'):
+    #         file_name = os.path.basename(link)[:-2]
+    #     else:
+    #         file_name = os.path.basename(link)
+
+    #     # 네이트판 = 링크 그대로 받으면 된다.
+    #     # 디씨 = 파일의 확장자를 알아낼 방법이 지나치게 복잡하다. 포기.
+    #     # 루리웹 = "https:{}".format(link[:2])
+    #     # 뽐뿌 = 'https:{}'.format(link)
+    #     # 에펨 = 'https:{}'.format(link)
+    #     # 뽐뿌 = 링크 그대로 받으면 된다.
+    #     # 와고 = 링크 그대로 받으면 된다.
+    #     # 웃대 = 파일 링크 형식이 이상하다. gif, mp4, 몇몇 이미지가 클릭해야만 본래 파일로 들어가지는 형식. 해결 가능하려나?
+    #     # 이토렌드 = "http://www.etoland.co.kr{}".format(link)
+    #     r = requests.get("{}".format(link), allow_redirects=True)
+    #     open(file_name, 'wb').write(r.content)
+
+    #     tag['src'] = file_name  # 여기에 파일의 경로 집어넣어야 함.
+    #     print(cnt)
