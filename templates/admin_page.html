@@ -1,54 +1,57 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
 
     <link rel="stylesheet" type="text/css" href="../../static/css/board_style.css">
 
     <meta charset="utf-8">
-    
+
     <title>Index</title>
 
 </head>
+
 <body>
     <form action='/admin_page.html' method="POST">
         <header>
-            <div id = "header">
+            <div id="header">
                 관리자
             </div>
         </header>
 
         <div>
-                <input type='submit' name='site_name' value='DCINSIDE'/>
-                <input type='submit' name='site_name' value='INVEN'/>
-                <input type='submit' name='site_name' value='HUMORUNIV'/>
-                <input type='submit' name='site_name' value='NATEPANN'/>
-                <input type='submit' name='site_name' value='PPOMPPU'/>
-                <input type='submit' name='site_name' value='RULIWEB'/>
-                <input type='submit' name='site_name' value='TODAYHUMOR'/>
-                <input type='submit' name='site_name' value='ETOLAND'/>
-                <input type='submit' name='site_name' value='YGOSU'/>
-                <input type='submit' name='site_name' value='FMKOREA'/>
+            <input type='submit' name='site_name' value='DCINSIDE' />
+            <input type='submit' name='site_name' value='INVEN' />
+            <input type='submit' name='site_name' value='HUMORUNIV' />
+            <input type='submit' name='site_name' value='NATEPANN' />
+            <input type='submit' name='site_name' value='PPOMPPU' />
+            <input type='submit' name='site_name' value='RULIWEB' />
+            <input type='submit' name='site_name' value='TODAYHUMOR' />
+            <input type='submit' name='site_name' value='ETOLAND' />
+            <input type='submit' name='site_name' value='YGOSU' />
+            <input type='submit' name='site_name' value='FMKOREA' />
         </div>
 
         <div>
-            <table id = "board_header">
+            <table id="board_header">
 
                 <th>게시글번호</th>
                 <th>제목</th>
                 <th>체크박스</th>
 
-                
+
                 {% if title_list == None %}
                 <tr></tr>
                 {% else %}
-                    <input type="hidden" name="site_name" value={{site_name}}>
-                    {% for index in range(for_num) %}
-                        <tr id = post>
-                            <td>{{index + 1}}</td>
-                            <td><a href="{{link_list[index]}}">{{title_list[index]}}</a></td>
-                            <td><input type="checkbox" name="check" value={{link_list[index]}} style='width:20px; height:20px;'></td>
-                        </tr>
-                    {% endfor %}
+                <input type="hidden" name="site_name" value={{site_name}}>
+                {% for index in range(for_num) %}
+                <tr id=post>
+                    <td>{{index + 1}}</td>
+                    <td><a href="{{link_list[index]}}">{{title_list[index]}}</a></td>
+                    <td><input type="checkbox" name="check" value={{link_list[index]}} style='width:20px; height:20px;'>
+                    </td>
+                </tr>
+                {% endfor %}
                 {% endif %}
         </div>
         <div>
@@ -56,9 +59,10 @@
                 <th><button class="button button2">DB전송</button></th>
             </table>
         </div>
-        
+
         <br>
     </form>
 </body>
 </head>
+
 </html>
