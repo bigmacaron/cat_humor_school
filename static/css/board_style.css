@@ -45,6 +45,11 @@ a:visited {text-decoration: none; color: gray;}
     height: 60px;
     margin : 10% 20%;
 }
+.input{
+    width: 200px;
+    margin: 3px 0;
+    height: 40px;
+}
 
 .info_page_button{
     font-family : "Nanum Gothic", sans-seif;
@@ -157,6 +162,9 @@ a:visited {text-decoration: none; color: gray;}
     font-weight : bold;
     border-spacing: 30px;
 }
+
+
+
 
 #info_page_button{
     position : relative;
