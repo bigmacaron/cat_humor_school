@@ -319,6 +319,30 @@ a:visited {text-decoration: none; color: gray;}
     color: white;
     border: 1px solid #4CAF50;
 }
+
+#reply_frame {
+    border: 1px solid rgb(0, 0, 0);
+    margin :  7% 7% 5% 7%;
+    resize : none;
+    font-size : 30px;
+    
+}
+
+.reply_button{
+    font-family : "Nanum Gothic", sans-seif;
+    font-size : 25px;
+    font-weight : bold;
+    width: 150px;
+    height: 100px;
+
+}
+
+#reply_button_frame{
+    margin-left : 50%;
+    border-spacing:30px;
+}
+
+
     
 #site{
     font-family : "Nanum Gothic", sans-seif;

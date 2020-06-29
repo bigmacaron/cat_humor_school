@@ -65,6 +65,11 @@ def user_info_find():
     return render_template('user_info_find.html')
 
 
+@app.route('/reply.html')
+def reply():
+    return render_template('reply.html')
+
+    
 @app.route('/user_join.html', methods=['POST', 'GET'])
 def user_join():
     form = Join_form()  
