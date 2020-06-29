@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 from flask import Flask , render_template, request, url_for, redirect ,flash
-=======
-from flask import Flask, render_template, request, url_for, redirect
->>>>>>> b8caceac858f6a4fda03f2274ee2e0c5a52fa452
 from dao import crowler, post_dao, users_dao
 from flask_wtf import FlaskForm
 from form import Join_form
@@ -20,11 +16,6 @@ def index():
     posts = post_dao.select_posts()
     return render_template('index.html', posts=posts, date=post_dao.get_date())
 
-<<<<<<< HEAD
-=======
-
-@app.route('/admin_page.html', methods=['POST', 'GET'])
->>>>>>> b8caceac858f6a4fda03f2274ee2e0c5a52fa452
 def admin_page(title_list=None, link_list=None, for_num=0):
     if request.method == 'POST':
         site_name = request.form['site_name']
@@ -76,9 +67,7 @@ def user_info_find():
 
 @app.route('/user_join.html', methods=['POST', 'GET'])
 def user_join():
-<<<<<<< HEAD
-    form = Join_form()
-    
+    form = Join_form()  
     if request.method == 'POST' :
         user_id = form.data.get('user_id')
         user_nick = form.data.get('user_nick')
@@ -99,18 +88,7 @@ def user_join():
         return redirect('/')                                   
     return render_template('user_join.html', form = form)  
 
-    # if request.method == 'POST':            
-    #     user_id = request.form.get('user_id')
-    #     user_nick = request.form.get('user_nick')
-    #     user_pw_get = request.form.get('user_pw')        
-    #     user_reg_date = users_dao.get_date()
- 
-    #     users_dao.insert_users(user_id, user_nick, user_pw, user_reg_date)
   
-    #     return redirect('/')
-   
-    # else:                               
-    #     return render_template('user_join.html')        
         
 
 @app.route('/user_login.html')
@@ -124,10 +102,8 @@ def img_test():
 
 
 if __name__ == '__main__':
-    # app.run(debug=True, host="0.0.0.0")
-
-    # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + cat_humor_schoool
+    
     app.config['SECRET_KEY']='sdqfdsafjkledwq'
     csrf =  CSRFProtect()
-    # cat_humor_schoool.init(app)
-    app.run(port="5000", host= "0.0.0.0", debug=True)  
+    app.run(debug=True, host="0.0.0.0")
+   
