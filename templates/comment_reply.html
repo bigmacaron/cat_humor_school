@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+
+<body>
+
+    {% block post %}
+
+    <textarea id = "reply_frame" cols = "54" rows = "25" name="user_reply" autofocus>
+
+    </textarea>
+    </div>
+
+    <div id = reply_button>
+        <table id = "reply_button_frame">
+            <tr>
+            <td><button class = "reply_button" type="button" onclick = "location.href ='index.html'">취소</button></td>
+
+            <td><button class = "reply_button" type="submit">댓글달기</button></td>
+            </tr>
+        </table>
+
+    </div>
+
+
+    {% endblock %}
+    {% block list %}
+    {% endblock %}
+    {% block paging %}
+    {% endblock %}
+</body>
+</html>

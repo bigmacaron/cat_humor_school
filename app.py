@@ -106,6 +106,13 @@ def img_test():
     return render_template('img_test.html')
 
 
+    
+@app.route('/comment_reply.html')
+def comment_reply():
+    return render_template('comment_reply.html')
+
+
+
 if __name__ == '__main__':
     
     app.config['SECRET_KEY']='sdqfdsafjkledwq'
