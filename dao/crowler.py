@@ -7,6 +7,42 @@ from fake_useragent import UserAgent
 # from datetime import datetime
 
 
+"""
+[ 전체 ]
+왜 체크하고 DB전송이 아닌 다른 버튼을 눌렀는데 다운로드가 진행이 되냐?
+
+[ 디씨 ]
+
+[ 인벤 ]
+
+[ 오늘의 유머 ]
+1. http://web.humoruniv.com/board/humor/read.html?table=pick&pg=0&number=974879 너굴맨 히든처리 이미지 올바르게 다운
+2. http://web.humoruniv.com/board/humor/read.html?table=pick&pg=0&number=974877 mp3파일을 올바르게 받지 못하는 예제
+3. http://web.humoruniv.com/board/humor/read.html?table=pick&pg=0&number=974875 로고 이미지 제거처리
+
+[ 네이트판 ]
+1. https://pann.nate.com/talk/352613377?page=1 설리가 죽은 진짜 이유, 이거 왜 이미지가 올바르게 출력이 안되지?
+2. https://pann.nate.com/talk/352599600?page=1 화상채팅 레전드...gif 이것도 gif가 올바르게 안받아진다.
+
+[ 뽐뿌 ]
+1. http://www.ppomppu.co.kr/zboard/view.php?id=humor&page=1&divpage=70&no=392980 마지막 줄 '됬네요' => '�楹六� '
+
+[ 루리웹 ]
+
+[ 오유 ]
+
+[ 이토랜드 ]
+1. http://www.etoland.co.kr//bbs/board.php?bo_table=etohumor03&wr_id=767080&sfl=top_n&stx=day&sst=wr_hit&sod=desc "쌰" =>  "�X"
+
+[ 와이고수 ]
+
+[ 에펨 ]
+1. https://www.fmkorea.com//index.php?mid=humor&sort_index=pop&order_type=desc&listStyle=list&document_srl=2971368200 이미지 한장만 다운로드됨.
+2. https://www.fmkorea.com//index.php?mid=humor&sort_index=pop&order_type=desc&listStyle=list&document_srl=2971040353 이미지 다운로드 중단됨.
+3. 위의 두 항목, 이미지 받는 주소가 왜 이상하냐??
+"""
+
+
 class Crowler:
 
     ####################################################################################################
@@ -40,7 +76,7 @@ class Crowler:
         def get_board(self):
             soup = self.get_beautifulsoup()
             titles = [title.a.text.strip()
-                      for title in soup.select('.subject') if title.a.text.strip() != '[웃긴썰]']
+                      for title in soup.select('.subject') if title.a.text.strip() not in ('[웃긴썰]', '[고품격]', '[움짤]')]
             links = ['https://pann.nate.com' + link.a['href']
                      for link in soup.select('.subject') if link.a['href'].endswith('1')]
             return titles, links
@@ -182,7 +218,7 @@ class Crowler:
 
         def get_post(self, link):
             soup = self.get_beautifulsoup(link)
-            title = soup.find(property='og:title').text
+            title = soup.find('title').text[8:]
             content = soup.select('.viewContent')[0]
             Crowler.edit_cnt(content)
             return title, content
@@ -308,24 +344,25 @@ class Crowler:
         tag_and_link = [(tag, tag['src']) for tag in img_tags if any(tag['src'].endswith(
             ext) for ext in ('jpg', 'jpeg', 'png', 'mp4', 'webm', 'gif', 'mp4?d', 'WEBP'))]
         for tag, link in tag_and_link:
-            try:
-                file_name = Crowler.downloader(link, head)
-                tag['src'] = "./static/img/"+file_name
-            except:
-                pass
+            temp = str(head)
+            if link.startswith('http'):
+                temp = ""
+            file_name = Crowler.downloader(link, temp)
+            tag['src'] = "./static/img/"+file_name
+            print('태그에 기록된 주소 = ', tag['src'])
 
     @staticmethod
     def downloader(link, head=""):
-        print("다운로드중인 파일 링크 = ", link)
-        file_name = os.path.basename(link)
+        print("다운로드중인 파일 링크 = ", "{}{}".format(head, link))
+        file_name = os.path.basename(link).replace('%', "")
         if link.endswith('?d'):
-            file_name = os.path.basename(link)[:-2]
+            file_name = os.path.basename(link)[:-2].replace('%', "")
         try:
-            req = requests.get("{}{}".format(head, link), allow_redirects=True)
+            req = requests.get("{}{}".format(head, link.lstrip('.')), allow_redirects=True)
             open("./static/img/"+file_name, 'wb').write(req.content)
+            return file_name
         except:
-            pass
-        return file_name
+            return file_name
 
     @staticmethod
     def get_random_header():
