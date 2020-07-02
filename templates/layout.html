@@ -3,6 +3,35 @@
 
 <head>
 
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function quick(){
+            $("#dialog").dialog({
+                autoOpen: false,
+                width: 250,
+                height: 270,
+                modal: true,
+                resizable: false,
+                draggable: false,
+                title: '퀵버튼',
+                
+                buttons:{
+                    "확인":function(){
+                        $(this).dialog("close");
+                    },"취소":function(){
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+            $("#quick_button").on("click",function(){
+                $("#dialog").dialog("open");
+            });
+        });
+    </script>
+
     <link rel="stylesheet" type="text/css" href="static/css/board_style.css">
 
     <meta charset="utf-8">
@@ -91,7 +120,20 @@
         <div class="paging">
 
             <!-- 자바스크립트를 활용하여 팝업창으로 변경하는 것이 좋아보인다. -->
-            <a href="/quick_move.html" onclick="window.open(this.href, '_blank', '/quick_move'); return false">퀵</a>
+            <a id = "quick_button" onclick = "quick()">퀵</a>
+
+            <div id = "dialog" title = "quick" style='display : none;'>
+
+                <div style="font-size : 30px; margin : 5% 2%;">Page </div>
+
+                <input type = "TEXT" name="page_number" size = 20 style = "margin : auto;">
+
+                <div>
+                    <button class = "quick_button" onclick="#" style = "margin-top : 5%;">Search</button>
+                </div>
+                
+            </div>
+
 
             {% if page_num_list %}
 

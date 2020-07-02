@@ -73,6 +73,16 @@ a:visited {text-decoration: none; color: gray;}
     padding : 10%;
 }
 
+.quick_button{
+    font-family : "Nanum Gothic", sans-seif;
+    font-weight:bold;
+    width: 70px;
+    height: 30px;
+    text-align : center;
+    padding : auto;
+    margin : auto;
+}
+
 .user_find_ID_button{
     width: 120px;
     height: 70px;
@@ -396,3 +406,4 @@ a:visited {text-decoration: none; color: gray;}
     text-align : center;
     font-size : 30px;
     }
+
