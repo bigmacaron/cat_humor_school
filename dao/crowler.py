@@ -40,7 +40,7 @@ class Crowler:
         def get_board(self):
             soup = self.get_beautifulsoup()
             titles = [title.a.text.strip()
-                      for title in soup.select('.subject') if title.a.text.strip() != '[웃긴썰]']
+                      for title in soup.select('.subject') if title.a.text.strip() != '[웃긴썰]' and title.a.text.strip() != '[고품격]']
             links = ['https://pann.nate.com' + link.a['href']
                      for link in soup.select('.subject') if link.a['href'].endswith('1')]
             return titles, links
@@ -182,7 +182,7 @@ class Crowler:
 
         def get_post(self, link):
             soup = self.get_beautifulsoup(link)
-            title = soup.find(property='og:title').text
+            title = soup.find('title').text[8:]
             content = soup.select('.viewContent')[0]
             Crowler.edit_cnt(content)
             return title, content
@@ -308,24 +308,25 @@ class Crowler:
         tag_and_link = [(tag, tag['src']) for tag in img_tags if any(tag['src'].endswith(
             ext) for ext in ('jpg', 'jpeg', 'png', 'mp4', 'webm', 'gif', 'mp4?d', 'WEBP'))]
         for tag, link in tag_and_link:
-            try:
-                file_name = Crowler.downloader(link, head)
-                tag['src'] = "./static/img/"+file_name
-            except:
-                pass
+            temp = str(head)
+            if link.startswith('http'):
+                temp = ""
+            file_name = Crowler.downloader(link, temp)
+            tag['src'] = "./static/img/"+file_name
+            print('태그에 기록된 주소 = ', tag['src'])
 
     @staticmethod
     def downloader(link, head=""):
-        print("다운로드중인 파일 링크 = ", link)
-        file_name = os.path.basename(link)
+        print("다운로드중인 파일 링크 = ", "{}{}".format(head, link))
+        file_name = os.path.basename(link).replace('%', "")
         if link.endswith('?d'):
-            file_name = os.path.basename(link)[:-2]
+            file_name = os.path.basename(link)[:-2].replace('%', "")
         try:
-            req = requests.get("{}{}".format(head, link), allow_redirects=True)
+            req = requests.get("{}{}".format(head, link.lstrip('.')), allow_redirects=True)
             open("./static/img/"+file_name, 'wb').write(req.content)
+            return file_name
         except:
-            pass
-        return file_name
+            return file_name
 
     @staticmethod
     def get_random_header():
